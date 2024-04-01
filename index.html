@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Team App Portal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            background-image: linear-gradient(45deg, #bdc3c7, #2c3e50);
+            font-family: Arial, sans-serif;
+        }
+
+        .title {
+            color: #132c33;
+            font-size: 1.5em;
+            margin: 20px;
+            display: flex;
+            align-items: center; /* Align items vertically */
+        }
+
+        .title img {
+            margin-right: 10px; /* Add margin between the logo and text */
+        }
+
+        .content {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #3498db;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <img src="https://employerfilesprod.blob.core.windows.net/useruploads/271757/company/2409/img-1654848307957" alt="Logo"> <!-- Add your logo URL here -->
+        <h2>Network Team App Portal</h2>
+    </div>
+    <div class="content">
+        <h1>Choose your application</h1>
+        <form action="/" method="post">
+            <div class="button">
+                <button type="submit" name="app" value="palo">
+                    <img src="https://images.ctfassets.net/ajuyecyagjo7/4A23Wo3eqKrcd0HEN3uFNe/e811019b19915946e917e64be946b504/eyJidWNrZXQiOiJnZHAtc2l0ZSIsImtleSI6ImF0dGFjaG1lbnRzL2Nra2Q1NzV4bjAwMmJ1OGI0NWI0cTM4YTctcGFudy1sb2dvLTJ1cC0wMS5wbmciLCJlZGl.webp" alt="Palo Alto Automation">
+                    <p>Palo Alto Automation</p>
+                </button>
+            </div>
+        </form>
+        <form action="/" method="post">
+            <div class="button">
+                <button type="submit" name="app" value="juniper">
+                    <img src="https://www.csltraining.com/wp-content/uploads/2020/09/Juniper-1.jpg" alt="Juniper S2S">
+                    <p>Juniper S2S</p>
+                </button>
+            </div>
+        </form>
+    </div>
