@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Provider</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Fallback color */
+            background-image: linear-gradient(45deg, #bdc3c7, #2c3e50);
+        }
+
+        .content {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 40px; /* Increased padding for larger content */
+            border-radius: 20px; /* Increased border radius for a smoother look */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            max-width: 600px; /* Maximum width of the content */
+            width: 90%; /* Set width to 90% of the viewport */
+        }
+
+        h1 {
+            color: #3498db;
+            font-size: 2.5em; /* Increased font size for the title */
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 1.2em; /* Increased font size for labels */
+        }
+
+        select {
+            padding: 12px; /* Increased padding for select boxes */
+            border-radius: 8px; /* Increased border radius for select boxes */
+            border: 2px solid #ccc; /* Increased border width for select boxes */
+            font-size: 1.1em; /* Increased font size for select boxes */
+            width: 100%; /* Set width to 100% of the container */
+            box-sizing: border-box; /* Include padding and border in width calculation */
+        }
+
+        input[type="submit"] {
+            padding: 15px 30px; /* Increased padding for the submit button */
+            font-size: 1.2em; /* Increased font size for the submit button */
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px; /* Increased border radius for the submit button */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%; /* Set width to 100% of the container */
+            box-sizing: border-box; /* Include padding and border in width calculation */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        /* Style for the back button */
+        #backButton {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        #backButton:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back button -->
+    <button id="backButton" onclick="goBack()">Back</button>
+
+    <div class="content">
+        <h1>Select a Provider</h1>
+        <p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsx7jS96cIg9siZhAebmScS8acF6hegvYcMw&amp;usqp=CAU" alt="Cloud Monitoring Tool | Monitor Cloud Services - Site24x7" /></p>
+        <form method="post">
+            <label for="provider">Choose a provider:</label><br>
+            <select id="provider" name="provider">
+                <option value="aws">AWS</option>
+                <option value="azure">Azure</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Configure" />
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:5000');
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            console.log('Starting logging...');
+            socket.emit('start_logging');
+        });
+
+        socket.on('log_message', (message) => {
+            console.log('Received log message:', message);
+            const logContainer = document.getElementById('logContainer');
+            logContainer.innerHTML += `<p>${message}</p>`;
+        });
+    </script>
+</body>
+</html>
+
