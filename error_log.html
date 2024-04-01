@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3498db;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <a id="backButton" href="/s2smain.html">Back</a>
+    <button id="logsButton" onclick="openErrorLog()">Logs</button> <!-- Button to open error log page -->
+
+    <div class="container">
+        <h1>Error Log</h1>
+        <ul>
+            {% for line in lines %}
+                <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        // Function to open error log page in a new tab
+        function openErrorLog() {
+            window.open("/error_log", "_blank");
+        }
+    </script>
+</body>
+</html>
+
