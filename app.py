@@ -1,7 +1,12 @@
 # app.py
 
-from flask import Flask, render_template, request, redirect, url_for, jsonify
-import logging
+from flask import Flask, render_template, request, session, redirect, url_for
+import requests
+import urllib3
+import json
+import getpass
+import xml.etree.ElementTree as ET
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = Flask(__name__)
 
