@@ -5,8 +5,6 @@ import logging
 
 app = Flask(__name__)
 
-stdout_file = open('stdout.log', 'w')
-sys.stdout = stdout_file
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
