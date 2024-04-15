@@ -76,7 +76,7 @@ def generate_aws_config(psk1, psk2, exip1, exip2, zone, int1, int2, int3, int4, 
     config = f'''
 
 
-set security ike proposal {name}-ike-proposal-1 authentication-method pre-shared-keys
+malakas
 set security ike proposal {name}-ike-proposal-1 dh-group group2
 set security ike proposal {name}-ike-proposal-1 authentication-algorithm sha-256
 set security ike proposal {name}-ike-proposal-1 encryption-algorithm aes-256-cbc
