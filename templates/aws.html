@@ -33,7 +33,7 @@
             margin-bottom: 8px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="file"] {
             width: calc(100% - 22px);
             padding: 10px;
             border-radius: 6px;
@@ -43,7 +43,7 @@
         }
 
         input[type="submit"] {
-            width: 100%;
+            grid-column: span 2;
             padding: 12px 24px;
             font-size: 1.1em;
             background-color: #3498db;
@@ -57,72 +57,13 @@
         input[type="submit"]:hover {
             background-color: #2980b9;
         }
-
-        .button {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            float: right; /* Align button to the right */
-        }
-
-        .button:hover {
-            background-color: #2980b9;
-        }
-
-        #backButton {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #backButton:hover {
-            background-color: #2980b9;
-        }
     </style>
 </head>
 <body>
-    <a id="backButton" href="/s2s">Back</a>
-    <button id="logsButton" class="button" onclick="openErrorLog()">Logs</button>
-
     <h1>AWS Configuration</h1>
-    <form method="post">
-        <label for="psk1">PSK for tunnel 1:</label>
-        <input type="text" name="psk1" id="psk1" required>
-
-        <label for="psk2">PSK for tunnel 2:</label>
-        <input type="text" name="psk2" id="psk2" required>
-
-        <label for="exip1">External IP of tunnel 1:</label>
-        <input type="text" name="exip1" id="exip1" required>
-
-        <label for="exip2">External IP of tunnel 2:</label>
-        <input type="text" name="exip2" id="exip2" required>
-
+    <form method="post" enctype="multipart/form-data">
         <label for="zone">Firewall Zone:</label>
         <input type="text" name="zone" id="zone" required>
-
-        <label for="int1">VPN Gateway 1 internal IP WITHOUT /30:</label>
-        <input type="text" name="int1" id="int1" required>
-
-        <label for="int2">VPN Gateway 2 internal IP WITHOUT /30:</label>
-        <input type="text" name="int2" id="int2" required>
-
-        <label for="int3">Customer Gateway 1 internal IP with /30:</label>
-        <input type="text" name="int3" id="int3" required>
-
-        <label for="int4">Customer Gateway 2 internal IP with /30:</label>
-        <input type="text" name="int4" id="int4" required>
 
         <label for="log1">Logical interface for tunnel 1 (just 200, not st0.200):</label>
         <input type="text" name="log1" id="log1" required>
@@ -136,15 +77,10 @@
         <label for="name">Name for the VPN tunnel:</label>
         <input type="text" name="name" id="name" required>
 
+        <label for="file">AWS Generic Configuration:</label>
+        <input type="file" name="file" id="file" accept=".txt">
+
         <input type="submit" value="Generate Configuration">
     </form>
-
-    <script>
-        // Function to open error log page in a new tab
-        function openErrorLog() {
-            window.open("/s2s/error_log", "_blank");
-        }
-    </script>
 </body>
 </html>
-
